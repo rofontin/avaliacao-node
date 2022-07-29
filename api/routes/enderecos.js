@@ -4,9 +4,8 @@ const router = express.Router();
 
 const EnderecoModel = mongoose.model("Endereco");
 const PessoaModel = mongoose.model("Pessoa");
-const controllerUser = require("../controllers/user-controller");
 
-router.get("/", controllerUser.verifyJWT, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const enderecos = await EnderecoModel.find({}).populate("pessoa", "nome");
 

@@ -35,9 +35,9 @@ router.post('/', async (req, res, next) => {
         const pessoa = new PessoaModel({
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
-            telefone: req.file.telefone,
-            email: req.file.email,
-            status: req.file.status
+            telefone: req.body.telefone,
+            email: req.body.email,
+            status: req.body.status
         });
         await pessoa.save();
         res.status(201).json({
@@ -108,7 +108,6 @@ router.patch('/:pessoaId', async (req, res, next) => {
     }
 
 })
-
 
 router.delete('/:pessoaId', async (req, res, next) => {
     const id = req.params.pessoaId;
